@@ -1,9 +1,10 @@
 import React from 'react';
-import Table from './table/table.component';
 import * as log from 'loglevel';
 import { pluginName } from '.';
 import Grid from './table/grid.component';
 import DataTable from './table/datatable.component';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import TableBuilder from './table/tableBuilder.component';
 
 class App extends React.Component<unknown, { hasError: boolean }> {
   public constructor(props: unknown) {
@@ -27,12 +28,14 @@ class App extends React.Component<unknown, { hasError: boolean }> {
 
     return (
       <div className="React-Table-Playground">
-        <p>Basic table</p>
-        <Table />
-        <p>DataGrid</p>
-        <Grid />
-        <p>DataTable</p>
-        <DataTable />
+        <QueryClientProvider client={new QueryClient()}>
+          <p>Basic table</p>
+          <TableBuilder />
+          <p>DataGrid</p>
+          <Grid />
+          <p>DataTable</p>
+          <DataTable />
+        </QueryClientProvider>
       </div>
     );
   }

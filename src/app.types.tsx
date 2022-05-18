@@ -1,5 +1,12 @@
 export const MicroFrontendId = 'scigateway';
 
+export interface PeopleResponse {
+  count: string;
+  next: string | null;
+  previous: string | null;
+  results: Person[];
+}
+
 export interface Person {
   name: string;
   height: string;

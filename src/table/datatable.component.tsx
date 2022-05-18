@@ -34,11 +34,7 @@ const DataTable = React.memo((): React.ReactElement => {
     []
   );
 
-  return (
-    <div>
-      <MUIDataTable title={'Data Table'} data={data} columns={columns} />
-    </div>
-  );
+  return <MUIDataTable title={'Data Table'} data={data} columns={columns} />;
 });
 
 DataTable.displayName = 'DataTable';
