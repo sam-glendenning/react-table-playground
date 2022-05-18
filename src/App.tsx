@@ -3,6 +3,7 @@ import Table from './table/table.component';
 import * as log from 'loglevel';
 import { pluginName } from '.';
 import Grid from './table/grid.component';
+import DataTable from './table/datatable.component';
 
 class App extends React.Component<unknown, { hasError: boolean }> {
   public constructor(props: unknown) {
@@ -30,6 +31,8 @@ class App extends React.Component<unknown, { hasError: boolean }> {
         <Table />
         <p>DataGrid</p>
         <Grid />
+        <p>DataTable</p>
+        <DataTable />
       </div>
     );
   }
