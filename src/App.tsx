@@ -2,6 +2,7 @@ import React from 'react';
 import Table from './table/table.component';
 import * as log from 'loglevel';
 import { pluginName } from '.';
+import Grid from './table/grid.component';
 
 class App extends React.Component<unknown, { hasError: boolean }> {
   public constructor(props: unknown) {
@@ -25,7 +26,10 @@ class App extends React.Component<unknown, { hasError: boolean }> {
 
     return (
       <div className="React-Table-Playground">
+        <p>Basic table</p>
         <Table />
+        <p>DataGrid</p>
+        <Grid />
       </div>
     );
   }
