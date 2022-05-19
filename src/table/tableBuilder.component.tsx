@@ -1,12 +1,20 @@
 import React from 'react';
 import { Column } from 'react-table';
-import { usePeoplePaginated } from '../data/people';
+import { usePeopleCount, usePeoplePaginated } from '../data/people';
 import Table from './table.component';
 
 const TableBuilder = React.memo((): React.ReactElement => {
   const [page, setPage] = React.useState(1);
+  const [maxPageCount, setMaxPageCount] = React.useState(1);
 
   const { data, isLoading: loading } = usePeoplePaginated(page);
+  const { data: count } = usePeopleCount();
+
+  React.useEffect(() => {
+    if (count) {
+      setMaxPageCount(Math.ceil(count / 10));
+    }
+  }, [count]);
 
   const columns: Column[] = React.useMemo(
     () => [
@@ -61,10 +69,16 @@ const TableBuilder = React.memo((): React.ReactElement => {
       ) : (
         <Table data={data} columns={columns} />
       )}
-      <button onClick={() => setPage(page - 1 >= 1 ? page - 1 : 1)}>
-        Previous
-      </button>
-      <button onClick={() => setPage(page + 1)}>Next</button>
+      {count && (
+        <div>
+          <button onClick={() => setPage(page - 1 >= 1 ? page - 1 : 1)}>
+            Previous
+          </button>
+          <button onClick={() => page + 1 <= maxPageCount && setPage(page + 1)}>
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 });

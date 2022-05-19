@@ -30,3 +30,19 @@ export const usePeoplePaginated = (
     }
   );
 };
+
+export const usePeopleCount = (): UseQueryResult<number, AxiosError> => {
+  return useQuery<number, AxiosError, number, [string]>(
+    ['count'],
+    () => {
+      return fetchPeople().then((data) => {
+        return parseInt(data.count);
+      });
+    },
+    {
+      onError: (error) => {
+        console.log('Got error ' + error.message);
+      },
+    }
+  );
+};

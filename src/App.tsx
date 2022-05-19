@@ -1,9 +1,10 @@
 import React from 'react';
 import * as log from 'loglevel';
 import { pluginName } from '.';
-import Grid from './table/grid.component';
-import DataTable from './table/datatable.component';
+import Grid from './grid/grid.component';
+import DataTable from './datatable/datatable.component';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import TableBuilder from './table/tableBuilder.component';
 
 class App extends React.Component<unknown, { hasError: boolean }> {
@@ -35,6 +36,7 @@ class App extends React.Component<unknown, { hasError: boolean }> {
           <Grid />
           <p>DataTable</p>
           <DataTable />
+          <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </div>
     );
