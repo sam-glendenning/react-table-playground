@@ -55,14 +55,6 @@ const DataTable = React.memo((): React.ReactElement => {
     []
   );
 
-  React.useEffect(() => {
-    console.log('Current page is ' + page);
-  }, [page]);
-
-  React.useEffect(() => {
-    console.log('data is ' + JSON.stringify(data?.at(0)?.name));
-  }, [data]);
-
   return (
     <div>
       {!data ? (
